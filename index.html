@@ -1,0 +1,201 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>MCPL</title>
+<link href="style.css" rel="stylesheet">
+
+  <script type="text/javascript" src="jscript.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-AMS_HTML-full"></script>
+</head>
+
+<body>
+<div class="content">
+  <h1>An Image is Worth Multiple Words: Learning Object Level Concepts using Multi-Concepts Prompts Learning</h1>
+  <p id="authors">
+    <a href="https://chenjin.netlify.app/">Chen Jin<sup>1</sup></a> 
+    <a href="https://rt416.github.io/">Ryutaro Tanno<sup>2</sup></a> 
+    <a href="https://uk.linkedin.com/in/amrutha-saseendran">Amrutha Saseendran<sup>1</sup> </a> 
+    <a href="https://tomdiethe.com/">Tom Diethe<sup>1</sup></a> 
+    <a href="https://uk.linkedin.com/in/philteare">Philip Teare<sup>1</sup></a><br>
+
+  <span style="font-size: 20px"><sup>1</sup> AstraZeneca &nbsp;&nbsp;<sup>2</sup> Google DeepMind
+  </span></p>
+  <font size="+2">
+        <p style="text-align: center;">
+          <a href="https://arxiv.org/abs/2310.12274" target="_blank">Paper</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://github.com/lxasqjc/MCPL" target="_blank">Code</a>
+        </p>
+  </font>
+  <br>
+  <img src="./docs/teaser.png" class="teaser-gif" style="width:100%;"><br>
+  <h4 style="text-align:center"><em>Multi-Concept Prompt Learning (MCPL) pioneers the novel task of mask-free text-guided learning for multiple prompts from one scene. Our approach not only enhances current methodologies but also paves the way for novel applications, such as facilitating knowledge discovery through natural language-driven interactions between humans and machines. </em></h4>
+</div>
+
+<div class="content">
+  <h2 style="text-align:center;">Abstract</h2>
+  <p>Textural Inversion, a prompt learning method, learns a singular embedding for a new "word" to represent image style and appearance, allowing it to be integrated into natural language sentences to generate novel synthesised images. However, identifying and integrating multiple object-level concepts within one scene poses significant challenges even when embeddings for individual concepts are attainable. This is further confirmed by our empirical tests. To address this challenge, we introduce a framework for <i>Multi-Concept Prompt Learning (MCPL)</i>, where multiple new "words" are simultaneously learned from a single sentence-image pair. To enhance the accuracy of word-concept correlation, we propose three regularization techniques: <i>Attention Masking (AttnMask)</i> to concentrate learning on relevant areas; <i>Prompts Contrastive Loss (PromptCL)</i> to separate the embeddings of different concepts; and <i>Bind adjective (Bind adj.)</i> to associate new "words" with known words. We evaluate via image generation, editing, and attention visualization with diverse images. Extensive quantitative comparisons demonstrate that our method can learn more semantically disentangled concepts with enhanced word-concept correlation. Additionally, we introduce a novel dataset and evaluation protocol tailored for this new task of learning object-level concepts.</p>
+</div>
+
+<div class="content">
+  <h2>Learning Multiple Concepts from Single Image and Editing</h2>
+  <h3>teddybear and skateboard example</h3>
+  <div class="cat-hat-main">
+    <div class="intro-text"> Our method learn multiple new concepts and assuring disentangled and precise prompt-concept correlation (verified with per-prompt attention map). <br> </div>
+    <div class="intro-text"> We can then modifying each local concept by replacing the prompts/words to generate novel images (click words below to try editing).<br> </div>
+  </div>
+  <br>
+  
+  <div class="cat-hat-main">
+    <img class="attn-img-tt" id="attn-img-tt" src="./docs/teddybear_timesquare/teddybear_timesquare_attention-mask.png">
+    <div class="edit-text"> <b>Visuslise</b> <br> 
+      <span class="tt-button_a">attention-mask</span> 
+      of <br> "a <span class="tt-button_a">photo</span> of brown * (<span class="tt-button_a">teddybear-attention</span>) 
+      on a rolling @ (<span class="tt-button_a">skateboard-attention</span>) at times square".
+    </div>
+    <img class="edit-img-tt" id="edit-img-tt" src="./docs/teddybear_timesquare/teddybear_timesquare_*.png">
+    <div class="edit-text"> <b>Edit</b> <br> "brown <span class="tt-button_b">*</span> &ensp; (<span class="tt-button_b">panda</span> / <span class="tt-button_b">cat</span>)
+      on a rolling <span class="tt-button_b">@</span> &ensp; (<span class="tt-button_b">surfboard</span> / <span class="tt-button_b">blanket</span>)
+      at times square." <br>
+    </div>
+  </div>
+  <h3>banana and basket example</h3>
+  <div class="cat-hat-main">
+    <img class="attn-img-bb" id="attn-img-bb" src="./docs/banana_basket/banana_basket_attention-mask.png">
+    <div class="edit-text"> <b>Visuslise</b> <br> 
+      <span class="bb-button_a">attention-mask</span> 
+      of <br> "a <span class="bb-button_a">photo</span> of brown * (<span class="bb-button_a">basket-attention</span>) 
+      with yellow @ (<span class="bb-button_a">banana-attention</span>)".
+    </div>
+    <img class="edit-img-bb" id="edit-img-bb" src="./docs/banana_basket/banana_basket_*.png">
+    <div class="edit-text"> <b>Edit</b> <br> "brown <span class="bb-bracket"><span class="bb-button_b">*</span> &ensp; (<span class="bb-button_b">stainless-pot</span> / <span class="bb-button_b">pottery</span>)</span>
+      with <span class="bb-bracket"><span class="bb-button_b">yellow-@</span> &ensp; (<span class="bb-button_b">yellow-pineapple</span> / <span class="bb-button_b">green-grapes</span>)</span>
+      at times square." <br>
+    </div>
+  </div>
+</div>
+   
+<div class="content">
+  <h2>Discovering OOD Concepts from Medical Image and Disentangling</h2>
+  </p>Our method opens an avenue for discovering/introducing new concepts the model have not seen before, from abundantly available natural language annotations such as paired textbook figures and captions. </p>
+  <h3>cardiac MRI example</h3>
+  <div class="cat-hat-main">
+    <div class="intro-text"> We learn out-of-distribution concepts using biomedical figures and their simplified captions. <br> </div>
+    <div class="intro-text"> We can then generate or remove each disentangled prompt to verify the learning of unfamiliar concepts.<br> </div>
+  </div>
+  <br>
+  
+  <div class="cat-hat-main">
+    <img class="attn-img-lge" id="attn-img-lge" src="./docs/lge_cmr/lge_cmr_attention-mask.png">
+    <div class="edit-text"> <b>Visuslise</b> <br> 
+      <span class="lge-button_a">attention-mask</span> 
+      of <br> "a <span class="lge-button_a">photo</span> of 
+      ! (<span class="lge-button_a">cMRI-attention</span>) with 
+      round * (<span class="lge-button_a">cavity-attention</span>) 
+      and thin @ (<span class="lge-button_a">scar-attention</span>) on the side circled by 
+      <span class="lge-button_a">yellow-lines-attention</span>".
+    </div>
+    <img class="edit-img-lge" id="edit-img-lge" src="./docs/lge_cmr/lge_cmr_round-*.png">
+    <div class="edit-text"> <b>Generate</b> <br> disentangled <br>
+      <span class="lge-bracket"><span class="lge-button_b">round-*</span>, <br>
+      <span class="lge-bracket"><span class="lge-button_b">thin-@</span>, <br>
+      <span class="lge-bracket"><span class="lge-button_b">yellow-lines</span>, <br>
+      <span class="lge-bracket"><span class="lge-button_b">!</span>, <br>
+    </div>
+  </div>
+  <h3>chest X-ray example</h3>
+  <div class="cat-hat-main">
+    <img class="attn-img-ms" id="attn-img-ms" src="./docs/ms_cxr/ms_cxr_attention-mask.png">
+    <div class="edit-text"> <b>Visuslise</b> <br> 
+      <span class="ms-button_a">attention-mask</span> 
+      of <br> "a <span class="ms-button_a">photo</span> of 
+      white ! (<span class="ms-button_a">chest-X-ray-attention</span>) and 
+      black @ (<span class="ms-button_a">lung-attention</span>) 
+      which have smoky * (<span class="ms-button_a">consolidation-attention</span>)".
+    </div>
+    <img class="edit-img-ms" id="edit-img-ms" src="./docs/ms_cxr/ms_cxr_white-!.png">
+    <div class="edit-text"> <b>Generate</b> <br> disentangled <br>
+      <span class="ms-bracket"><span class="ms-button_b">white-!</span>, <br>
+      <span class="ms-bracket"><span class="ms-button_b">black-@</span>, <br>
+      <span class="ms-bracket"><span class="ms-button_b">smoky-*</span>, <br>
+      or <br>
+      <span class="ms-bracket"><span class="ms-button_b">remove white-!</span>, <br>
+      <span class="ms-bracket"><span class="ms-button_b">remove black-@</span>, <br>
+      <span class="ms-bracket"><span class="ms-button_b">remove smoky-*</span>, <br>
+    </div>
+  </div>
+</div>
+ 
+
+<div class="content">
+  <h2>Method overview</h2>
+    <img class="summary-img" src="./docs/method.png" style="width:100%;">
+    <p>
+      <i>MCPL</i> takes a sentence (top-left) and a sample image (top-right) as input, feeding them into a pre-trained text-guided diffusion model comprising a text encoder \(c_\phi\) and a denoising network \(\epsilon_\theta\). The string's multiple prompts are encoded into a sequence of embeddings which guide the network to generate images \(\tilde{X}_0\) close to the target one \(X_0\). MCPL focuses on learning multiple learnable prompts (coloured texts), updating only the embeddings \(\{v^*\}\) and \(\{v^\&\}\) of the learnable prompts while keeping \(c_\phi\) and \(\epsilon_\theta\) frozen. We introduce <i>Prompts Contrastive Loss (PromptCL)</i> to help separate multiple concepts within learnable embeddings. We also apply <i>Attention Masking (AttnMask)</i>, using masks based on the average cross-attention of prompts, to refine prompt learning on images. Optionally we associate each learnable prompt with an adjective (e.g., "brown" and "rolling") to improve control over each learned concept, referred to as <i>Bind adj.</i>
+  </p>
+</div>
+
+<div class="content">
+  <h2>Introducing MCPL-one and MCPL-diverse training strategies</h2>
+    <img class="summary-img" src="./docs/041_MCv1_MCv2_v2.png" style="width:100%;">
+    <p>
+      Learning and Composing “ball” and “box”. We learned the concepts of “ball” and “box” using different methods (top row) and composed them into unified scenes (bottom row). We compare three learning methods: Textural Inversion (Gal et al., 2022), which learns each concept separately from isolated images (left); MCPL-one, which jointly learns both concepts from un- cropped examples using a single prompt string (middle); and MCPL-diverse, which advances this by learning both concepts with per-image specific relationships (right).
+  </p>
+</div>
+
+<div class="content">
+  <h2>Ablation studies</h2>
+  <h3>comparing MCPL-diverse versus MCPL-one</h3>
+    <img class="experiment-img" src="./docs/ablation_per_img_diverse_vs_one_cat_hat.png"">
+    <p>
+      Visual comparison of MCPL-diverse versus MCPL-one in learning per-image different concept tasks (cat with different hat example). As MCPL-diverse are specially designed for such tasks, it outperforms MCPL-one, which fails to capture per image different hat styles.
+  </p>
+
+  <h3>learning more than two concepts from a single image</h3>
+    <img class="experiment-img" src="./docs/ours_vs_bas_chicken.png"">
+    <p>
+      A qualitative comparison between our method (MCPL-diverse) and mask-based approaches. Our MCPL-diverse, which neither uses mask inputs nor updates model parameters, showed decent results, outperforming most mask-based approaches and was closer to SoTA Break-A-Scene. Images modified from Break-A-Scene (Avrahami et al., 2023). 
+  </p>
+</div>
+
+<div class="content">
+  <h2>Quantitative Evaluations Dataset and Results</h2>
+    </p>
+      We collect both in-distribution natural images and out-of-distribution biomedical images over 16 object-level concepts, with all images containing multiple concepts and object-level masks. 
+    </p>
+    <img class="summary-img" src="./docs/044v_visualise_bas_and_ground_truth.png" style="width:100%;">
+    <p>
+      Visualisation of the prepared ground truth examples (top) and the generated images with Break-A-Scene (bottom). Note that BAS requires segmentation masks as input and employs separate segmentation models to produce masked objects, thus serving as a performance upper-bound.
+      We compare three baseline methods: 1) Textural Inversion applied to each masked object serving as our best estimate for the unknown disentangled “ground truth” embedding. 2) Break-A-Scene (BAS), the state-of-the-art (SoTA) mask-based multi-concept learning method, serves as a performance upper bound, though it’s not directly comparable. 3) MCPL-all as our naive adaptation of the Textural Inversion method to achieve the multi-concepts learning goal.
+    </p>
+
+  <h3>The t-SNE projection of the learned embeddings</h3>
+    <img class="experiment-img" src="./docs/0432_tsne_v3.png"">
+    <p>
+      Our method can effectively distinguish all learned concepts compared to Textural Inversion (MCPL-all), the SoTA mask-based learning method, Break-A-Scene, and the masked ’ground truth.
+  </p>
+
+  <h3>Embedding similarity in learned object-level concepts compared to masked “ground truth”</h3>
+  <div class="cat-hat-main">
+    <img class="result-img" src="./docs/0433_iclr_emb_similarity_natural_merged.png"">
+    <img class="result-img" src="./docs/0433_iclr_emb_similarity_medical_merged.png"">
+  </div>
+  <p>
+      We evaluate the embedding similarity of our multi-concept adaptation of Textural Inversion (MCPL-all) and the state-of-the-art (SoTA) mask-based learning method, Break-A-Scene (BAS) by Avrahami et al. (2023), against our regularised versions. The analysis is conducted in both pre-trained text (BERT) and image encoder spaces (CLIP, DINOv1, and DINOv2), with each bar representing an average of 40,000 pairwise cosine similarities. 
+  </p>
+
+</div>
+
+
+
+<div class="content">
+  <h4>BibTex</h4>
+  <p> @article{jin2023image,<br>
+  &nbsp;&nbsp;title={An Image is Worth Multiple Words: Learning Object Level Concepts using Multi-Concept Prompt Learning},<br>
+  &nbsp;&nbsp;author={Jin, Chen and Tanno, Ryutaro and Saseendran, Amrutha and Diethe, Tom and Teare, Philip},<br>
+  &nbsp;&nbsp;journal={arXiv preprint arXiv:2310.12274},<br>
+  &nbsp;&nbsp;year={2023}<br>
+  } </p>
+<br>
+</div>
+</body>
+</html>
