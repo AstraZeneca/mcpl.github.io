@@ -191,12 +191,12 @@ function modifyImg_ms(i){
     return inner_
 }
 
-function set_alpha(slider, fluffy){
+function set_alpha(slider, skincancer){
     let alpha = 1 - (slider.value - 16) / 52;
     let red = Math.round(248 + 7 * alpha);
     let green = Math.round(128 + 127 * alpha);
     let blue = Math.round(255 * alpha);
-    fluffy.style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+    skincancer.style.backgroundColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
 }
 
 function init() {
@@ -254,16 +254,40 @@ function init() {
     }
 
 
-    let slider = document.getElementById("range_bunny");
-    let image_bunny = document.getElementById("bunny-img");
-    let fluffy  = document.getElementById("fluffy");
-    set_alpha(slider, fluffy)
+    let slider = document.getElementById("range_skin3d");
+    let image_skin3d = document.getElementById("skin3d-img");
+    let skincancer  = document.getElementById("skincancer");
+    set_alpha(slider, skincancer)
     slider.oninput = function() {
         // 248, 128, 0
-     image_bunny.src = "./docs/teddybear_timesquare/teddybear_timesquare_" + String(slider.value).padStart(2, '0') + ".png";
-     set_alpha(slider, fluffy)
+     image_skin3d.src = "./docs/melanoma_skin_3d/ms_3d_" + String(slider.value) + ".jpg";
+     set_alpha(slider, skincancer)
 
     }
+
+    let slider2 = document.getElementById("range_skinreal");
+    let image_skinreal = document.getElementById("skinreal-img");
+    let skincancer_real  = document.getElementById("skincancer_real");
+    set_alpha(slider2, skincancer_real)
+    slider2.oninput = function() {
+        // 248, 128, 0
+        image_skinreal.src = "./docs/melanoma_skin_real/ms_real_" + String(slider2.value) + ".jpg";
+     set_alpha(slider2, skincancer_real)
+
+    }
+
+    let slider3 = document.getElementById("range_cxray");
+    let image_cxray = document.getElementById("cxray-img");
+    let cxray_real  = document.getElementById("cxray_real");
+    set_alpha(slider3, cxray_real)
+    slider3.oninput = function() {
+        // 248, 128, 0
+        image_cxray.src = "./docs/chest_xray_cos/cxrayl_" + String(slider3.value) + ".jpg";
+     set_alpha(slider3, cxray_real)
+
+    }
+
+
 
 
 }

@@ -23,7 +23,8 @@
   <font size="+2">
         <p style="text-align: center;">
           <a href="https://arxiv.org/abs/2310.12274" target="_blank">Paper</a> &nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="https://github.com/lxasqjc/MCPL" target="_blank">Code</a>
+          <a href="https://github.com/AstraZeneca/MCPL/tree/master" target="_blank">Code</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://github.com/AstraZeneca/MCPL/tree/master/dataset" target="_blank">Dataset</a>
         </p>
   </font>
   <br>
@@ -124,7 +125,44 @@
     </div>
   </div>
 </div>
- 
+
+<div class="content">
+  <h2>Hypothesis generation of disease progression</h2>
+  <p>Our method can also help experts/non-experts learn unfamiliar concepts from picture(s) and explore their impacts.</p>
+    <div class="skin3d-main">
+         <img class="dev-img-demo" id="skin3d-img-ori" src="./docs/melanoma_skin_3d/ms_3d_demo.png">
+         <img class="dev-img" id="skin3d-img" src="./docs/melanoma_skin_3d/ms_3d_25.jpg">
+         <div class="dev-text">
+
+            <span style="display: block; text-align: center">Human: "how <span id ="skincancer" style="background-color: #f88000;">skin cancer</span> may develop?" </span><br>
+            <input type="range" min="1" max="48" value="26" class="slider" id="range_skin3d">
+
+            </div>
+    </div>
+  <br>
+  <div class="skinreal-main">
+      <img class="dev-img-demo" id="skinreal-img-ori" src="./docs/melanoma_skin_real/ms_real_demo.png">
+      <img class="dev-img" id="skinreal-img" src="./docs/melanoma_skin_real/ms_real_25.jpg">
+      <div class="dev-text">
+
+        <span style="display: block; text-align: center">Human: "how <span id ="skincancer_real" style="background-color: #f88000;">skin cancer</span> may develop?" </span><br>
+        <input type="range" min="0" max="47" value="25" class="slider2" id="range_skinreal">
+
+        </div>
+  </div>
+  <br>
+  <div class="cxray-main">
+      <img class="dev-img-demo" id="cxray-img-ori" src="./docs/chest_xray_cos/chest_xray_demo.png">
+      <img class="dev-img" id="cxray-img" src="./docs/chest_xray_cos/cxrayl_25.jpg">
+      <div class="dev-text">
+
+        <span style="display: block; text-align: center">Human: "how <span id ="cxray_real" style="background-color: #f88000;">lung consolidation</span> may develop?" </span><br>
+        <input type="range" min="0" max="46" value="25" class="slider2" id="range_cxray">
+
+        </div>
+  </div>
+  <br>
+</div>
 
 <div class="content">
   <h2>Method overview</h2>
