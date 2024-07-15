@@ -30,13 +30,14 @@
         </p>
   </font>
   <br>
-  <img src="./docs/teaser.jpg" class="teaser-gif" style="width:100%;"><br>
-  <h4 style="text-align:center"><em>Multi-Concept Prompt Learning (MCPL) pioneers the novel task of mask-free text-guided learning for multiple prompts from one scene. Our approach not only enhances current methodologies but also paves the way for novel applications, such as facilitating knowledge discovery through natural language-driven interactions between humans and machines. </em></h4>
+  <img src="./docs/teaser_tldr.jpg" class="teaser-gif" style="width:100%;"><br>
+  <!-- <h4 style="text-align:center"><em>Multi-Concept Prompt Learning (MCPL) pioneers the novel task of mask-free text-guided learning for multiple prompts from one scene. Our approach not only enhances current methodologies but also paves the way for novel applications, such as facilitating knowledge discovery through natural language-driven interactions between humans and machines. </em></h4> -->
+  <h4 style="text-align:center"><em>TL;DR: We propose a framework that allows us to discover and manipulate multiple concepts in a given image with partial text instructions. </em></h4>
 </div>
 
-<div class="content">
+<!-- <div class="content">
   <img style="width: 100%;" src="./docs/teaser.gif" alt="teaser.">
-</div>
+</div> -->
 
 <div class="content">
   <h2 style="text-align:center;">Abstract</h2>
@@ -45,10 +46,10 @@
 
 <div class="content">
   <h2>Learning Multiple Concepts from Single Image and Editing</h2>
-  <h3>teddybear and skateboard example</h3>
+  <h3>teddy bear and skateboard example</h3>
   <div class="cat-hat-main">
-    <div class="intro-text"> Our method learn multiple new concepts and assuring disentangled and precise prompt-concept correlation (verified with per-prompt attention map). <br> </div>
-    <div class="intro-text"> We can then modifying each local concept by replacing the prompts/words to generate novel images (click words below to try editing).<br> </div>
+    <div class="intro-text"> Our method learns multiple new concepts and assures disentangled and precise prompt-concept correlation (click to view per-prompt attention maps). <br> </div>
+    <div class="intro-text"> We can then modify each concept by replacing the prompts/words to generate novel images (click words below to try editing).<br> </div>
   </div>
   <br>
   
@@ -83,7 +84,8 @@
    
 <div class="content">
   <h2>Discovering OOD Concepts from Medical Image and Disentangling</h2>
-  </p>Our method opens an avenue for discovering/introducing new concepts the model have not seen before, from abundantly available natural language annotations such as paired textbook figures and captions. </p>
+  <div class="body-text"> Our method opens an avenue for discovering/introducing new concepts the model have not seen before, from abundantly available natural language annotations such as paired textbook figures and captions. <br> </div>
+  <br><br>
   <h3>cardiac MRI example</h3>
   <div class="cat-hat-main">
     <div class="intro-text"> We learn out-of-distribution concepts using biomedical figures and their simplified captions. <br> </div>
@@ -133,36 +135,36 @@
 </div>
 
 <div class="content">
-  <h2>Hypothesis generation of disease progression</h2>
-  <p>Our method can also help experts/non-experts learn unfamiliar concepts from picture(s) and explore their impacts.</p>
+  <h2>Hypothesis Generation of Disease Progression</h2>
+  <div class="body-text"> Our method can also help experts/non-experts learn unfamiliar concepts from picture(s) and explore their impacts. <br> </div>
     <div class="skin3d-main">
-         <img class="dev-img-demo" id="skin3d-img-ori" src="./docs/melanoma_skin_3d/ms_3d_demo.png">
+         <img class="dev-img-demo" id="skin3d-img-ori" src="./docs/melanoma_skin_3d/ms_3d_demo_b.png">
          <img class="dev-img" id="skin3d-img" src="./docs/melanoma_skin_3d/ms_3d_25.jpg">
          <div class="dev-text">
 
-            <span style="display: block; text-align: center">Human: "how <span id ="skincancer" style="background-color: #f88000;">skin cancer</span> may develop?" </span><br>
+            <span style="display: block; text-align: center">Human: "how <span id ="skincancer" style="background-color: #e55608;">skin cancer</span> may develop?" </span><br>
             <input type="range" min="1" max="48" value="26" class="slider" id="range_skin3d">
 
             </div>
     </div>
   <br>
   <div class="skinreal-main">
-      <img class="dev-img-demo" id="skinreal-img-ori" src="./docs/melanoma_skin_real/ms_real_demo.png">
+      <img class="dev-img-demo" id="skinreal-img-ori" src="./docs/melanoma_skin_real/ms_real_demo_b.png">
       <img class="dev-img" id="skinreal-img" src="./docs/melanoma_skin_real/ms_real_25.jpg">
       <div class="dev-text">
 
-        <span style="display: block; text-align: center">Human: "how <span id ="skincancer_real" style="background-color: #f88000;">skin cancer</span> may develop?" </span><br>
+        <span style="display: block; text-align: center">Human: "how <span id ="skincancer_real" style="background-color: #e55608;">skin cancer</span> may develop?" </span><br>
         <input type="range" min="0" max="47" value="25" class="slider2" id="range_skinreal">
 
         </div>
   </div>
   <br>
   <div class="cxray-main">
-      <img class="dev-img-demo" id="cxray-img-ori" src="./docs/chest_xray_cos/chest_xray_demo.png">
+      <img class="dev-img-demo" id="cxray-img-ori" src="./docs/chest_xray_cos/chest_xray_demo_b.png">
       <img class="dev-img" id="cxray-img" src="./docs/chest_xray_cos/cxrayl_25.jpg">
       <div class="dev-text">
 
-        <span style="display: block; text-align: center">Human: "how <span id ="cxray_real" style="background-color: #f88000;">lung consolidation</span> may develop?" </span><br>
+        <span style="display: block; text-align: center">Human: "how <span id ="cxray_real" style="background-color: #e55608;">lung consolidation</span> may develop?" </span><br>
         <input type="range" min="0" max="46" value="25" class="slider2" id="range_cxray">
 
         </div>
@@ -171,7 +173,7 @@
 </div>
 
 <div class="content">
-  <h2>Method overview</h2>
+  <h2>Method Overview</h2>
     <img class="summary-img" src="./docs/method.png" style="width:100%;">
     <p>
       <i>MCPL</i> takes a sentence (top-left) and a sample image (top-right) as input, feeding them into a pre-trained text-guided diffusion model comprising a text encoder \(c_\phi\) and a denoising network \(\epsilon_\theta\). The string's multiple prompts are encoded into a sequence of embeddings which guide the network to generate images \(\tilde{X}_0\) close to the target one \(X_0\). MCPL focuses on learning multiple learnable prompts (coloured texts), updating only the embeddings \(\{v^*\}\) and \(\{v^\&\}\) of the learnable prompts while keeping \(c_\phi\) and \(\epsilon_\theta\) frozen. We introduce <i>Prompts Contrastive Loss (PromptCL)</i> to help separate multiple concepts within learnable embeddings. We also apply <i>Attention Masking (AttnMask)</i>, using masks based on the average cross-attention of prompts, to refine prompt learning on images. Optionally we associate each learnable prompt with an adjective (e.g., "brown" and "rolling") to improve control over each learned concept, referred to as <i>Bind adj.</i>
@@ -179,7 +181,7 @@
 </div>
 
 <div class="content">
-  <h2>Introducing MCPL-one and MCPL-diverse training strategies</h2>
+  <h2>Introducing MCPL-one and MCPL-diverse Training Strategies</h2>
     <img class="summary-img" src="./docs/041_MCv1_MCv2_v2.png" style="width:100%;">
     <p>
       Learning and Composing “ball” and “box”. We learned the concepts of “ball” and “box” using different methods (top row) and composed them into unified scenes (bottom row). We compare three learning methods: Textural Inversion (Gal et al., 2022), which learns each concept separately from isolated images (left); MCPL-one, which jointly learns both concepts from un- cropped examples using a single prompt string (middle); and MCPL-diverse, which advances this by learning both concepts with per-image specific relationships (right).
@@ -187,14 +189,14 @@
 </div>
 
 <div class="content">
-  <h2>Ablation studies</h2>
-  <h3>comparing MCPL-diverse versus MCPL-one</h3>
+  <h2>Ablation Studies</h2>
+  <h3>Comparing MCPL-diverse versus MCPL-one</h3>
     <img class="experiment-img" src="./docs/ablation_per_img_diverse_vs_one_cat_hat.png"">
     <p>
       Visual comparison of MCPL-diverse versus MCPL-one in learning per-image different concept tasks (cat with different hat example). As MCPL-diverse are specially designed for such tasks, it outperforms MCPL-one, which fails to capture per image different hat styles.
   </p>
 
-  <h3>learning more than two concepts from a single image</h3>
+  <h3>Learning more than two concepts from a single image</h3>
     <img class="experiment-img" src="./docs/ours_vs_bas_chicken.png"">
     <p>
       A qualitative comparison between our method (MCPL-diverse) and mask-based approaches. Our MCPL-diverse, which neither uses mask inputs nor updates model parameters, showed decent results, outperforming most mask-based approaches and was closer to SoTA Break-A-Scene. Images modified from Break-A-Scene (Avrahami et al., 2023). 
