@@ -32,7 +32,7 @@
   <br>
   <img src="./docs/teaser_tldr.jpg" class="teaser-gif" style="width:100%;"><br>
   <!-- <h4 style="text-align:center"><em>Multi-Concept Prompt Learning (MCPL) pioneers the novel task of mask-free text-guided learning for multiple prompts from one scene. Our approach not only enhances current methodologies but also paves the way for novel applications, such as facilitating knowledge discovery through natural language-driven interactions between humans and machines. </em></h4> -->
-  <h4 style="text-align:center"><em>TL;DR: We propose a framework that allows us to discover and manipulate multiple concepts in a given image with partial text instructions. </em></h4>
+  <h4 style="text-align:center"><em>TL;DR: We propose a framework that allows us to discover and manipulate multiple concepts in a given image with partial text instructions.  </em></h4>
 </div>
 
 <!-- <div class="content">
@@ -176,7 +176,7 @@
   <h2>Method Overview</h2>
     <img class="summary-img" src="./docs/method.png" style="width:100%;">
     <p>
-      <i>MCPL</i> takes a sentence (top-left) and a sample image (top-right) as input, feeding them into a pre-trained text-guided diffusion model comprising a text encoder \(c_\phi\) and a denoising network \(\epsilon_\theta\). The string's multiple prompts are encoded into a sequence of embeddings which guide the network to generate images \(\tilde{X}_0\) close to the target one \(X_0\). MCPL focuses on learning multiple learnable prompts (coloured texts), updating only the embeddings \(\{v^*\}\) and \(\{v^\&\}\) of the learnable prompts while keeping \(c_\phi\) and \(\epsilon_\theta\) frozen. We introduce <i>Prompts Contrastive Loss (PromptCL)</i> to help separate multiple concepts within learnable embeddings. We also apply <i>Attention Masking (AttnMask)</i>, using masks based on the average cross-attention of prompts, to refine prompt learning on images. Optionally we associate each learnable prompt with an adjective (e.g., "brown" and "rolling") to improve control over each learned concept, referred to as <i>Bind adj.</i>
+      Prior methods failed due to inaccurate word-concept correlation. We fixed this by contrasting different concepts and aligning cross-attention with semantically meaningful regions of known words. Details are as follows: <i>MCPL</i> takes a sentence (top-left) and a sample image (top-right) as input, feeding them into a pre-trained text-guided diffusion model comprising a text encoder \(c_\phi\) and a denoising network \(\epsilon_\theta\). The string's multiple prompts are encoded into a sequence of embeddings which guide the network to generate images \(\tilde{X}_0\) close to the target one \(X_0\). MCPL focuses on learning multiple learnable prompts (coloured texts), updating only the embeddings \(\{v^*\}\) and \(\{v^\&\}\) of the learnable prompts while keeping \(c_\phi\) and \(\epsilon_\theta\) frozen. We introduce <i>Prompts Contrastive Loss (PromptCL)</i> to help separate multiple concepts within learnable embeddings. We also apply <i>Attention Masking (AttnMask)</i>, using masks based on the average cross-attention of prompts, to refine prompt learning on images. Optionally we associate each learnable prompt with an adjective (e.g., "brown" and "rolling") to improve control over each learned concept, referred to as <i>Bind adj.</i>
   </p>
 </div>
 
